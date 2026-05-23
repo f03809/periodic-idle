@@ -748,10 +748,14 @@ export class UIManager {
     if (rScroll) rScroll.innerHTML = '';
 
     // Update top bar element info
-    document.getElementById('tb-symbol')?.setAttribute('textContent', el?.symbol || '');
-    document.getElementById('tb-atomic')?.setAttribute('textContent', el?.atomicNumber || '');
-    document.getElementById('tb-element-name')?.setAttribute('textContent', el?.name || '');
-    document.getElementById('tb-refined-name')?.setAttribute('textContent', `Refining → ${el?.refinedName || ''}`);
+    const tbSymbol = document.getElementById('tb-symbol');
+    const tbAtomic = document.getElementById('tb-atomic');
+    const tbName = document.getElementById('tb-element-name');
+    const tbRefined = document.getElementById('tb-refined-name');
+    if (tbSymbol) tbSymbol.textContent = el?.symbol || '';
+    if (tbAtomic) tbAtomic.textContent = el?.atomicNumber || '';
+    if (tbName) tbName.textContent = el?.name || '';
+    if (tbRefined) tbRefined.textContent = `Refining → ${el?.refinedName || ''}`;
 
     this._syncCardsFromState();
     this._scene._transportRenderer?.rebuild();

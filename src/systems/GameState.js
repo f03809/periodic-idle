@@ -265,8 +265,10 @@ export class GameState {
     const cost = this.getUpgradeCostFor(unit, atomicNumber);
     if (!this.spend(cost)) return false;
     unit.level++;
-    unit.capacity = unit.capacity ? unit.capacity * 2 : 1;
-    unit.baseProduction = unit.baseProduction ? unit.baseProduction * 2 : unit.baseProduction;
+    // Capacity doubles per level (for lifts/cars/tubes)
+    if (unit.capacity !== undefined) unit.capacity = Math.pow(2, unit.level - 1);
+    // baseProduction is NOT mutated — level multiplier is applied at use site:
+    // effectiveProduction = baseProduction * 2^(level-1)
     return true;
   }
 
