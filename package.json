@@ -1,0 +1,17 @@
+{
+  "name": "periodic-idle",
+  "version": "0.1.0",
+  "description": "A scientific sci-fi idle game based on the periodic table of elements",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "phaser": "^3.80.0"
+  }
+}
